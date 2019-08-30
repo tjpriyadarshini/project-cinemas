@@ -1,0 +1,12 @@
+insert into movie_theatres(movie_id,theatre_id) values (1,1);
+insert into movie_theatres(movie_id,theatre_id) values (2,1);
+insert into movie_theatres(movie_id,theatre_id) values (4,1);
+insert into movie_theatres(movie_id,theatre_id) values (6,1);
+insert into movie_theatres(movie_id,theatre_id) values (1,2);
+insert into movie_theatres(movie_id,theatre_id) values (4,2);
+insert into movie_theatres(movie_id,theatre_id) values (7,2);
+insert into movie_theatres(movie_id,theatre_id) values (8,2);
+insert into movie_theatres(movie_id,theatre_id) values (1,3);
+insert into movie_theatres(movie_id,theatre_id) values (5,3);
+insert into movie_theatres(movie_id,theatre_id) values (6,3);
+insert into movie_theatres(movie_id,theatre_id) values (8,3);

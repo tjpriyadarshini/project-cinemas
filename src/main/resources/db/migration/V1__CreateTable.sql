@@ -1,0 +1,1 @@
+create table users(id SERIAL, email varchar, password varchar);

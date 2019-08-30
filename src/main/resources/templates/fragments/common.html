@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <title>JustCinemas</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link href="resources/static/css/movie.css"
+          th:href="@{css/movie.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-primary" href="#" th:href="@{/}">
+            <img src="resources/static/images/JustCinemasLogo.png" width="50"
+                 th:src="@{/images/JustCinemasLogo.png}" alt="">
+            Just Cinemas
+        </a>
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active border border-primary border-10">
+                <a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#smallModal">Chennai</a></li>
+            </li>
+            <li th:if="${session.user == null}" class="nav-item border border-primary border-10">
+                <span class="alink" ><a class="nav-link text-primary " href="#" th:href="@{/login}">Login <label th:text="'/'"></label></a></span>
+                <span class="alink" ><a class="nav-link text-primary" href="#" th:href="@{/signup}">
+                  SignUp</a></span>
+            </li>
+            <li th:unless="${session.user == null}" class="nav-item border border-primary border-10">
+                <a class="nav-link text-primary" href="#" th:href="@{/logoff}">
+                    <label th:text="${session.user.userName}+' /   '"></label>Logoff</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Choose Location</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Chennai</a>
+                        <div class="dropdown-menu">
+                            <th:block th:each="location : ${locations}">
+                                  <a href="#" class="dropdown-item"  th:text="${location.locationName}"></a>
+                                 <!-- <th: text="${session.locationId}+'/ '"/>-->
+
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div th:fragment="footer">
+        <footer class="d-flex justify-content-center mt-auto">
+            <div class="d-flex justify-content-center mt-auto">
+                <p><a href="#" th:href="@{/about_us}" style="margin-right:10px"> About us </a> <a href="#"
+                                                                                                  th:href="@{/terms}">Terms
+                    and Conditions</a></p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

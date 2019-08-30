@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title>Just Cinemas</title>
+
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <ul class="nav nav-pills">  
+            <li class="nav-item">
+                    <a class="nav-link active "  href="#" th:href="@{/}">New Releases</a>  
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link  disabled "  href="#" th:href="@{/}">Coming Soon</a>  
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active"><br>
+                <div class="row ">
+                    <th:block th:each="movie : ${movies}">
+
+                        <div class="col-lg-2 card">
+                        <img th:src="@{/images/{image}(image=${movie.fileName})}" class="card-img-top image">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${movie.movieName}"></h5>
+                            <p class="card-text" th:text="${movie.soundTrack}"></p>
+                        </div>
+
+                    </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
